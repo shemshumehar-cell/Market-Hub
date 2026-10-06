@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: markethub-marketplace
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: ./src/database/markethub.db
